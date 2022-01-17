@@ -20,9 +20,9 @@ MAINTAINER Prologue SOLUTIONS <entreprise@prologue-solutions.tn>
 # Set the default config file
 ENV ODOO_RC /opt/ps/conf/odoo.conf
 
-COPY ./main/odoo.conf /opt/ps/conf/
-COPY ./main/wait-for-psql.py /usr/local/bin/
-COPY ./main/entrypoint.sh /
+COPY ./local/odoo.conf /opt/ps/conf/
+COPY ./local/wait-for-psql.py /usr/local/bin/
+COPY ./local/entrypoint.sh /
 
 RUN useradd -m -U -r -s /bin/bash odoo \
     && mkdir -p /opt/ps/data \
