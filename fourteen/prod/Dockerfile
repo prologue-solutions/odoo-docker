@@ -2,7 +2,7 @@ FROM odoo-fourteen-base:latest as builder
 
 RUN apt-get update && apt-get install git -y && mkdir /opt/ps/ \
     && git clone https://github.com/odoo/odoo --single-branch --depth 1 --branch 14.0 /opt/ps/odoo \
-    && git clone git@github.com:prologue-solutions/odoo-fourteen.git --single-branch --depth 1 --branch main /opt/ps/odoo-fourteen \
+    && git clone git@github.com:prologue-solutions/odoo-fourteen.git --single-branch --depth 1 --branch prod /opt/ps/odoo-fourteen \
     && pip3 install --upgrade pip \
     && pip install -r /opt/ps/odoo/requirements.txt \
     && pip install -r /opt/ps/odoo-fourteen/requirements.txt \
@@ -15,9 +15,9 @@ MAINTAINER Prologue SOLUTIONS <entreprise@prologue-solutions.tn>
 # Set the default config file
 ENV ODOO_RC /opt/ps/conf/odoo.conf
 
-COPY ./main/odoo.conf /opt/ps/conf/
-COPY ./main/wait-for-psql.py /usr/local/bin/
-COPY ./main/entrypoint.sh /
+COPY ./prod/odoo.conf /opt/ps/conf/
+COPY ./prod/wait-for-psql.py /usr/local/bin/
+COPY ./prod/entrypoint.sh /
 
 RUN useradd -m -U -r -s /bin/bash odoo \
     && mkdir -p /opt/ps/data \
