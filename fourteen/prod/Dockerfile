@@ -27,7 +27,7 @@ RUN useradd -m -U -r -s /bin/bash odoo \
 COPY --from=builder /opt/ps/odoo-bin /opt/ps/
 COPY --from=builder /opt/ps/odoo /opt/ps/odoo
 COPY --from=builder /opt/ps/addons /opt/ps/addons
-COPY --from=builder /opt/ps/odoo-fourteen/addons /opt/ps/odoo-fourteen
+COPY --from=builder /opt/ps/odoo-fourteen/addons /opt/ps/fourteen
 
 COPY --from=builder /opt/ps /opt/ps
 COPY --from=builder /usr/lib/python3/dist-packages /usr/lib/python3/dist-packages
